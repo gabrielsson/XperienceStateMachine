@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Xperience State Machine</string>
+    <string name="machine_button">Machine Button</string>
+
+</resources>
