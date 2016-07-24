@@ -149,6 +149,7 @@ public class MachineActivity extends AppCompatActivity implements OnClickListene
         button.setOnClickListener(this);
         toggle();
     }
+
     private void toggle() {
         if (mVisible) {
             hide();
@@ -205,14 +206,18 @@ public class MachineActivity extends AppCompatActivity implements OnClickListene
         View v = findViewById(R.id.imageView);
         Animation rotation = AnimationUtils.loadAnimation(this, R.anim.rotate);
         findViewById(R.id.machine_layout).setBackgroundColor(ContextCompat.getColor(this.getApplicationContext(), R.color.green));
-        v.startAnimation(rotation);
+        if (v != null) {
+            v.startAnimation(rotation);
+        }
     }
 
     private void stopMachine() {
         View v = findViewById(R.id.imageView);
         findViewById(R.id.machine_layout).setBackgroundColor(ContextCompat.getColor(this.getApplicationContext(), R.color.red));
 
-        v.clearAnimation();
+        if (v != null) {
+            v.clearAnimation();
+        }
 
 
     }
