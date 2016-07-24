@@ -16,56 +16,7 @@ public class LongRunningService extends Service {
 
     private Looper mServiceLooper;
     private ServiceHandler mServiceHandler; // Handler that receives messages from the thread
-    private final class ServiceHandler extends Handler {
-        public ServiceHandler(Looper looper) {
-            super(looper);
-        }
-        @Override
-        public void handleMessage(Message msg) {
 
-
-            Messenger messenger= MachineActivity.getMainActivity().mMessenger;
-
-            try {
-                messenger.send(Message.obtain(null, MachineStates.RUN, "RUNNING"));
-                Thread.sleep(6000);
-
-
-                messenger.send(Message.obtain(null, MachineStates.STOP, "STOPPING"));
-                Thread.sleep(1000);
-                /*messenger.send(Message.obtain(null, RUN, "Connecting"));
-                // Normally we would do some work here, like download a file.
-                // For our sample, we just sleep for 10 seconds.
-                // Normally we would do some work here, like download a file.
-                // For our sample, we just sleep for 10 seconds.
-
-                messenger.send(Message.obtain(null, STOP, "Connected"));
-                // Normally we would do some work here, like download a file.
-                // For our sample, we just sleep for 10 seconds.
-                Thread.sleep(1000);
-
-
-                messenger.send(Message.obtain(null, DOWNLOADSTARTED, "Download Started"));
-                // Normally we would do some work here, like download a file.
-                // For our sample, we just sleep for 10 seconds.
-                Thread.sleep(1000);
-
-
-                messenger.send(Message.obtain(null, DOWNLOADFINISHED, "Download Finished"));
-                */
-
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (RemoteException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            // Stop the service using the startId, so that we don't stop
-            // the service in the middle of handling another job
-            stopSelf(msg.arg1);
-        }
-    }
 
     @Override
     public void onCreate() {

@@ -19,6 +19,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 public class MachineActivity extends AppCompatActivity implements OnClickListener{
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -136,7 +139,6 @@ public class MachineActivity extends AppCompatActivity implements OnClickListene
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.imageView);
 
-
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +146,6 @@ public class MachineActivity extends AppCompatActivity implements OnClickListene
                 toggle();
             }
         });
-
         final Button button = (Button) findViewById(R.id.machine_button);
         button.setOnClickListener(this);
         toggle();
