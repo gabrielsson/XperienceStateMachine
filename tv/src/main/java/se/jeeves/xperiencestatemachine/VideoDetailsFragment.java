@@ -89,7 +89,7 @@ public class VideoDetailsFragment extends DetailsFragment {
             updateBackground(mSelectedMovie.getBackgroundImageUrl());
             setOnItemViewClickedListener(new ItemViewClickedListener());
         } else {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
+            Intent intent = new Intent(getActivity(), MachineTVActivity.class);
             startActivity(intent);
         }
     }

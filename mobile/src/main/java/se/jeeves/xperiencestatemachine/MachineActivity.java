@@ -10,6 +10,7 @@ import android.os.Messenger;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -115,12 +116,6 @@ public class MachineActivity extends AppCompatActivity implements OnClickListene
                     Toast.makeText(getApplicationContext(), "STOP", Toast.LENGTH_LONG).show();
                     stopMachine();
                     break;
-                case MachineStates.DOWNLOADSTARTED:
-                    Toast.makeText(getApplicationContext(), "Download Started", Toast.LENGTH_LONG).show();
-                    break;
-                case MachineStates.DOWNLOADFINISHED:
-                    Toast.makeText(getApplicationContext(), "Download Finished", Toast.LENGTH_LONG).show();
-                    break;
                 default:
                     super.handleMessage(msg);
 
@@ -131,7 +126,7 @@ public class MachineActivity extends AppCompatActivity implements OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         machineActivity = this;
-
+        registerFCMId();
         setContentView(R.layout.activity_machine);
         findViewById(R.id.machine_layout).setBackgroundColor(ContextCompat.getColor(this.getApplicationContext(), R.color.red));
 
@@ -229,5 +224,10 @@ public class MachineActivity extends AppCompatActivity implements OnClickListene
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+    private void registerFCMId() {
+        Log.d("TAG", FirebaseInstanceId.getInstance().getToken());
+        MyFirebaseInstanceIdService.sendRegistrationToServer(FirebaseInstanceId.getInstance().getToken());
+
     }
 }

@@ -60,14 +60,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void replyToAppServer() {
-        FirebaseMessaging fm = FirebaseMessaging.getInstance();
-
-        RemoteMessage remoteMessage = new RemoteMessage.Builder(SENDER_ID + "@gcm.googleapis.com")
-                .setMessageId(System.currentTimeMillis() + "")
-                .addData("my_message", "Hello World")
-                .addData("my_action","SAY_HELLO")
-                .build();
-        fm.send(remoteMessage);
 
 
 

@@ -6,7 +6,5 @@ package se.jeeves.xperiencestatemachine;
 public class MachineStates {
     public static final int RUN = 1;
     public static final int STOP = 2;
-    public static final int DOWNLOADSTARTED = 3;
-    public static final int DOWNLOADFINISHED = 4;
 
 }

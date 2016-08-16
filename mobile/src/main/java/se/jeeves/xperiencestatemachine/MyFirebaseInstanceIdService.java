@@ -37,7 +37,7 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
      *
      * @param token The new token.
      */
-    private void sendRegistrationToServer(String token) {
+    public static void sendRegistrationToServer(String token) {
         System.out.println(token);
     }
 }
