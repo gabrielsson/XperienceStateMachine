@@ -25,7 +25,7 @@ public class WatchdogCall implements MethodCall {
 
     @Override
     public String getAlias() {
-        return "Watchdog";
+        return "Android";
     }
 
     @Override

@@ -13,7 +13,7 @@ import se.jeeves.xperiencestatemachine.access.util.JsbJSONInvoker;
  * Created by max.gabrielsson on 15/08/16.
  */
 public class Access {
-    private static final String server = "http://server:9000/jsb-url/";
+    private static final String server = "http://jvsstoapp01.jeeves.top:9001/jsb-url/";
     private static final String TAG = "se.jeeves.Access";
     private String signature;
     private String password;
@@ -25,7 +25,8 @@ public class Access {
 
             Log.d(TAG, "URL (" + fullUrl + ") requested with parameters (" +
                 getRequestString(methodCall.getParameters()) + ") by " + signature);
-            return JsbJSONInvoker.invoke(fullUrl, getRequestString(methodCall.getParameters()), signature, password);
+            JSONObject res = JsbJSONInvoker.invoke(fullUrl, getRequestString(methodCall.getParameters()), signature, password);
+            return res;
         } catch (JSONException e) {
             Log.d(TAG, "Something wrong with JSON format of MethodCall", e);
         }
@@ -35,7 +36,6 @@ public class Access {
     private String getRequestString(JSONObject jsonObject) {
         Iterator<String> it = jsonObject.keys();
         StringBuffer sb = new StringBuffer();
-        sb.append("?");
         while(it.hasNext()) {
             if(sb.length()>1) sb.append("&");
             try {

@@ -226,7 +226,8 @@ public class MachineActivity extends AppCompatActivity implements OnClickListene
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
     private void registerFCMId() {
-        Log.d("TAG", FirebaseInstanceId.getInstance().getToken());
+        //Log.d("TAG", FirebaseInstanceId.getInstance().getToken());
+        FirebaseMessaging.getInstance().subscribeToTopic("state");
         MyFirebaseInstanceIdService.sendRegistrationToServer(FirebaseInstanceId.getInstance().getToken());
 
     }

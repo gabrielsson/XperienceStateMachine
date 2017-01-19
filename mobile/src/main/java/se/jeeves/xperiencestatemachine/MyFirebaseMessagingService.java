@@ -13,6 +13,11 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.json.JSONObject;
+
+import se.jeeves.xperiencestatemachine.access.definition.Access;
+import se.jeeves.xperiencestatemachine.access.impl.WatchdogCall;
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String SENDER_ID = "1060277659547";
     private ServiceHandler mServiceHandler; // Handler that receives messages from the thread
@@ -61,7 +66,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private void replyToAppServer() {
 
-
+        Access access = new Access();
+        WatchdogCall watchdogCall = new WatchdogCall();
+//        JSONObject json = access.invoke(watchdogCall);
+        //Log.d("ACCESS", json.toString());
 
     }
 

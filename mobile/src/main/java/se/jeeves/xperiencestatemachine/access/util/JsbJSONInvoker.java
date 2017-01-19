@@ -33,9 +33,9 @@ public class JsbJSONInvoker {
             URL url = new URL(invokeUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            String authorizationString = "Basic " + Base64.encodeToString((userName + ":" + password).getBytes(), Base64.DEFAULT);
+            //String authorizationString = "Basic " + Base64.encodeToString((userName + ":" + password).getBytes(), Base64.DEFAULT);
 
-            connection.setRequestProperty("Authorization", authorizationString.replace("\n", ""));
+            //connection.setRequestProperty("Authorization", authorizationString.replace("\n", ""));
             connection.setRequestMethod("POST");
 
             connection.setRequestProperty("Content-Type",
